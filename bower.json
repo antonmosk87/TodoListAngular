@@ -1,0 +1,17 @@
+{
+  "name": "vstda",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Anton <antonmosk87@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
