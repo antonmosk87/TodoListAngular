@@ -5,10 +5,10 @@
         .module('app')
         .controller('TodoController', TodoController);
 
-    TodoController.$inject = [];
+    TodoController.$inject = ['todoFactory'];
 
     /* @ngInject */
-    function TodoController() {
+    function TodoController(todoFactory) {
         var vm = this;
 
 
@@ -35,8 +35,24 @@
         ];
 
         vm.addItem = function() {
-            vm.items.push(vm.newItem)
-            vm.newItem = '';
+            todoFactory.create({
+            "name": vm.name,
+            "priorityNum": vm.priority.number,
+
+            })
+            .then(function(data) {
+              vm.items.push(data);
+            });
+        }
+
+        activate();
+
+        function activate() {
+          todoFactory
+            .getAll()
+            .then(function(data){
+              vm.items = data;
+            });
         }
 
     }
